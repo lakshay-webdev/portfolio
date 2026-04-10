@@ -1,0 +1,798 @@
+﻿<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshay Gupta — Full Stack Developer</title>
+    <meta name="description" content="Lakshay Gupta - BCA Final Year Student &amp; Full Stack Developer. Building modern web applications with React, Node.js &amp; MongoDB.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- PRELOADER -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+                <div class="preloader-logo">Lakshay Gupta</div>
+            <div class="preloader-bar">
+                <div class="preloader-progress" id="preloaderProgress"></div>
+            </div>
+            <div class="preloader-text">Loading<span class="dot-animation">...</span></div>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- AI CHATBOT -->
+    <div class="chatbot-container">
+        <button class="chatbot-toggle" id="chatbotToggle" aria-label="Open AI Assistant">
+            <i class="fas fa-robot"></i>
+        </button>
+        <div class="chatbot-modal" id="chatbotModal">
+            <div class="chatbot-header">
+                <div class="chatbot-avatar">
+                    <img src="images/profile.png" alt="Lakshay AI">
+                </div>
+                <div class="chatbot-info">
+                    <h3>Lakshay AI Assistant</h3>
+                    <span>Online</span>
+                </div>
+                <button class="chatbot-close" id="chatbotClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="chatbot-messages" id="chatbotMessages">
+                <div class="message bot-message">
+                    <div class="message-avatar">
+                        <img src="images/profile.png" alt="Lakshay">
+                    </div>
+                    <div class="message-content">
+                        <p>Hi! I'm Lakshay's AI assistant. Ask me anything about his skills, projects, or experience!</p>
+                        <span class="message-time">Just now</span>
+                    </div>
+                </div>
+            </div>
+            <div class="chatbot-input">
+                <input type="text" id="chatbotInput" placeholder="Ask me anything...">
+                <button id="chatbotSend">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" data-magnetic>
+                <span class="logo-bracket"></span>Lakshay Gupta<span class="logo-bracket"></span>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-link active" data-text="Home">Home</a></li>
+                <li><a href="#about" class="nav-link" data-text="About">About</a></li>
+                <li><a href="#skills" class="nav-link" data-text="Skills">Skills</a></li>
+                <li><a href="#dashboard" class="nav-link" data-text="Dashboard">Dashboard</a></li>
+                <li><a href="#projects" class="nav-link" data-text="Projects">Projects</a></li>
+                <li><a href="#experience" class="nav-link" data-text="Journey">Journey</a></li>
+                <li><a href="#contact" class="nav-link" data-text="Contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" data-magnetic>
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun"></i>
+                    <span class="toggle-bg"></span>
+                </button>
+                <a href="#contact" class="btn btn-glow btn-sm" data-magnetic>
+                    <span>Let's Talk</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <button class="hamburger" id="hamburger" aria-label="Menu">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-bg">
+            <div class="hero-grid-lines"></div>
+            <div class="hero-gradient-orb hero-orb-1"></div>
+            <div class="hero-gradient-orb hero-orb-2"></div>
+            <div class="hero-gradient-orb hero-orb-3"></div>
+            <canvas id="particleCanvas"></canvas>
+        </div>
+        <div class="container hero-container">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up" style="--delay: 0.2s">
+                    <span class="badge-dot"></span>
+                    Available for work
+                </div>
+                <h1 class="hero-title">
+                    <span class="hero-line reveal-up" style="--delay: 0.4s">
+                        <span class="hero-line-inner">Hi, I'm <span class="text-accent">Lakshay</span></span>
+                    </span>
+                    <span class="hero-line reveal-up" style="--delay: 0.6s">
+                        <span class="hero-line-inner">I build things for</span>
+                    </span>
+                    <span class="hero-line reveal-up" style="--delay: 0.8s">
+                        <span class="hero-line-inner">the <span class="text-gradient">web.</span></span>
+                    </span>
+                </h1>
+                <div class="hero-role reveal-up" style="--delay: 1.0s">
+                    <span class="role-line"></span>
+                    <span class="typewriter-wrapper">
+                        <span id="typewriter" class="typewriter-text"></span>
+                        <span class="typewriter-cursor"></span>
+                    </span>
+                </div>
+                <p class="hero-description reveal-up" style="--delay: 1.2s">
+                    A passionate <strong>Full Stack Developer</strong> and BCA Final Year student
+                    crafting modern, scalable web applications. Currently focused on the
+                    <strong>MERN Stack</strong> ecosystem.
+                </p>
+                <div class="hero-cta reveal-up" style="--delay: 1.4s">
+                    <a href="#projects" class="btn btn-primary btn-lg" data-magnetic>
+                        <span>View My Work</span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <a href="resume.html" target="_blank" class="btn btn-ghost btn-lg" data-magnetic>
+                        <span>Resume</span>
+                        <i class="fas fa-file-alt"></i>
+                    </a>
+                </div>
+                <div class="hero-stats reveal-up" style="--delay: 1.6s">
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="2">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="10">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Technologies</span>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <span class="stat-number" data-count="3">0</span><span class="stat-plus">+</span>
+                        <span class="stat-label">Years Learning</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual reveal-up" style="--delay: 0.6s">
+                <div class="hero-card-stack">
+                    <div class="floating-card card-1">
+                        <div class="card-icon"><i class="fab fa-react"></i></div>
+                        <span>React.js</span>
+                    </div>
+                    <div class="floating-card card-2">
+                        <div class="card-icon"><i class="fab fa-node-js"></i></div>
+                        <span>Node.js</span>
+                    </div>
+                    <div class="floating-card card-3">
+                        <div class="card-icon"><i class="fas fa-leaf"></i></div>
+                        <span>MongoDB</span>
+                    </div>
+                    <div class="floating-card card-4">
+                        <div class="card-icon"><i class="fab fa-js"></i></div>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="hero-image-frame">
+                    <div class="hero-img-glow"></div>
+                    <div class="hero-img-container">
+                        <img src="images/profile.png" alt="Lakshay Gupta Profile Photo" class="hero-profile-photo">
+                    </div>
+                    <div class="hero-status-badge">
+                        <span class="status-dot"></span>
+                        <span>Open to work</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="hero-social-bar reveal-up" style="--delay: 1.8s">
+            <a href="https://github.com/lakshay-webdev" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/lakshay-gupta-webdev" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="mailto:ug13262@gmail.com" aria-label="Email" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
+            <a href="tel:+918700146531" aria-label="Phone" data-tooltip="Phone"><i class="fas fa-phone"></i></a>
+            <div class="social-line"></div>
+        </div>
+        <div class="scroll-indicator reveal-up" style="--delay: 2.0s">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll Down</span>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="section" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// about me</span>
+                <h2 class="section-title reveal-up">
+                    Passionate about creating<br>
+                    <span class="text-gradient">digital experiences</span>
+                </h2>
+            </div>
+            <div class="about-layout">
+                <div class="about-image-col reveal-up">
+                    <div class="about-image-card">
+                        <div class="about-img-wrapper">
+                            <img src="images/profile.png" alt="Lakshay Gupta profile photo" class="profile-photo">
+                        </div>
+                        <div class="about-experience-badge">
+                            <span class="exp-number">3+</span>
+                            <span class="exp-text">Years of<br>Learning</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-content-col">
+                    <div class="about-text-block reveal-up">
+                        <p class="about-lead">
+                            I'm a <strong class="text-accent">BCA Final Year student</strong> from Sunderdeep College (CCS University)
+                            with a deep passion for building things that live on the internet.
+                        </p>
+                        <p>
+                            My interest in web development started back in 2023 when I first tried
+                            creating a simple HTML page — turns out that taught me a lot about how
+                            the web works! Since then, I've been on a continuous journey of learning
+                            and building.
+                        </p>
+                        <p>
+                            I specialize in the <strong>MERN Stack</strong> (MongoDB, Express.js, React.js, Node.js)
+                            and love turning complex problems into simple, beautiful, and intuitive designs.
+                            When I'm not coding, you'll find me exploring new technologies or working on
+                            personal projects.
+                        </p>
+                    </div>
+                    <div class="about-details reveal-up">
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-user"></i></div>
+                            <div class="detail-info">
+                                <span class="detail-label">Name</span>
+                                <span class="detail-value">Lakshay Gupta</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-graduation-cap"></i></div>
+                            <div class="detail-info">
+                                <span class="detail-label">Education</span>
+                                <span class="detail-value">BCA — CCS University</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="detail-info">
+                                <span class="detail-label">Email</span>
+                                <span class="detail-value">ug13262@gmail.com</span>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <div class="detail-icon"><i class="fas fa-map-pin"></i></div>
+                            <div class="detail-info">
+                                <span class="detail-label">Location</span>
+                                <span class="detail-value">Delhi, India</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about-actions reveal-up">
+                        <a href="resume.html" target="_blank" class="btn btn-primary" data-magnetic>
+                            <span>View CV</span>
+                            <i class="fas fa-file-alt"></i>
+                        </a>
+                        <a href="#contact" class="btn btn-outline" data-magnetic>
+                            <span>Let's Talk</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="section section-dark" id="skills">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// skills &amp; tools</span>
+                <h2 class="section-title reveal-up">
+                    My <span class="text-gradient">Tech Stack</span>
+                </h2>
+                <p class="section-desc reveal-up">Technologies and tools I use to bring ideas to life</p>
+            </div>
+            <div class="skills-showcase">
+                <div class="skill-card-grid">
+                    <div class="skill-card reveal-up" data-tilt>
+                        <div class="skill-card-glow"></div>
+                        <div class="skill-card-header">
+                            <div class="skill-icon-wrapper"><i class="fas fa-palette"></i></div>
+                            <h3>Frontend</h3>
+                            <span class="skill-count">4 skills</span>
+                        </div>
+                        <div class="skill-tags">
+                            <div class="skill-tag"><i class="fab fa-html5"></i><span>HTML5</span><div class="tag-glow" style="--tag-color: #E34F26"></div></div>
+                            <div class="skill-tag"><i class="fab fa-css3-alt"></i><span>CSS3</span><div class="tag-glow" style="--tag-color: #1572B6"></div></div>
+                            <div class="skill-tag"><i class="fab fa-js"></i><span>JavaScript</span><div class="tag-glow" style="--tag-color: #F7DF1E"></div></div>
+                            <div class="skill-tag"><i class="fab fa-react"></i><span>React.js</span><div class="tag-glow" style="--tag-color: #61DAFB"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal-up" data-tilt>
+                        <div class="skill-card-glow"></div>
+                        <div class="skill-card-header">
+                            <div class="skill-icon-wrapper"><i class="fas fa-server"></i></div>
+                            <h3>Backend</h3>
+                            <span class="skill-count">2 skills</span>
+                        </div>
+                        <div class="skill-tags">
+                            <div class="skill-tag"><i class="fab fa-node-js"></i><span>Node.js</span><div class="tag-glow" style="--tag-color: #339933"></div></div>
+                            <div class="skill-tag"><i class="fas fa-cogs"></i><span>Express.js</span><div class="tag-glow" style="--tag-color: #888"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal-up" data-tilt>
+                        <div class="skill-card-glow"></div>
+                        <div class="skill-card-header">
+                            <div class="skill-icon-wrapper"><i class="fas fa-database"></i></div>
+                            <h3>Database</h3>
+                            <span class="skill-count">2 skills</span>
+                        </div>
+                        <div class="skill-tags">
+                            <div class="skill-tag"><i class="fas fa-leaf"></i><span>MongoDB</span><div class="tag-glow" style="--tag-color: #47A248"></div></div>
+                            <div class="skill-tag"><i class="fas fa-database"></i><span>MySQL</span><div class="tag-glow" style="--tag-color: #4479A1"></div></div>
+                        </div>
+                    </div>
+                    <div class="skill-card reveal-up" data-tilt>
+                        <div class="skill-card-glow"></div>
+                        <div class="skill-card-header">
+                            <div class="skill-icon-wrapper"><i class="fas fa-wrench"></i></div>
+                            <h3>Dev Tools</h3>
+                            <span class="skill-count">4 tools</span>
+                        </div>
+                        <div class="skill-tags">
+                            <div class="skill-tag"><i class="fab fa-git-alt"></i><span>Git</span><div class="tag-glow" style="--tag-color: #F05032"></div></div>
+                            <div class="skill-tag"><i class="fab fa-github"></i><span>GitHub</span><div class="tag-glow" style="--tag-color: #aaa"></div></div>
+                            <div class="skill-tag"><i class="fas fa-code"></i><span>VS Code</span><div class="tag-glow" style="--tag-color: #007ACC"></div></div>
+                            <div class="skill-tag"><i class="fas fa-rocket"></i><span>Vercel</span><div class="tag-glow" style="--tag-color: #ccc"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GITHUB DASHBOARD -->
+    <section class="section section-dark" id="dashboard">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// github stats</span>
+                <h2 class="section-title reveal-up">
+                    GitHub <span class="text-gradient">Dashboard</span>
+                </h2>
+                <p class="section-desc reveal-up">Real-time insights from my coding journey</p>
+            </div>
+            <div class="dashboard-grid reveal-up">
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="dashboard-content">
+                        <h3 id="repoCount">--</h3>
+                        <p>Public Repositories</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <div class="dashboard-content">
+                        <h3 id="starsCount">--</h3>
+                        <p>Total Stars</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="dashboard-content">
+                        <h3 id="followersCount">--</h3>
+                        <p>Followers</p>
+                    </div>
+                </div>
+                <div class="dashboard-card">
+                    <div class="dashboard-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="dashboard-content">
+                        <h3 id="joinedDate">--</h3>
+                        <p>Joined GitHub</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section class="section" id="projects">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// featured work</span>
+                <h2 class="section-title reveal-up">
+                    Projects I've <span class="text-gradient">Built</span>
+                </h2>
+                <p class="section-desc reveal-up">Each project is a unique piece of development</p>
+            </div>
+            <!-- Featured Project -->
+            <div class="featured-project reveal-up">
+                <div class="featured-project-image">
+                    <div class="project-browser-bar">
+                        <div class="browser-dots"><span></span><span></span><span></span></div>
+                        <div class="browser-url">la-casa-alpha.vercel.app</div>
+                    </div>
+                    <div class="featured-img-placeholder lacasa-preview">
+                        <iframe src="https://la-casa-alpha.vercel.app/" title="LaCasa Smart Restaurant Preview" loading="lazy"></iframe>
+                        <a href="https://la-casa-alpha.vercel.app/" target="_blank" class="iframe-overlay">
+                            <span class="iframe-overlay-text"><i class="fas fa-external-link-alt"></i> View Live Site</span>
+                        </a>
+                    </div>
+                    <!-- Project Screenshots Slider -->
+                    <div class="project-slider">
+                        <div class="slider-container">
+                            <div class="slider-track">
+                                <div class="slide active">
+                                    <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=800&h=600&fit=crop" alt="LaCasa Homepage" loading="lazy">
+                                </div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&h=600&fit=crop" alt="LaCasa Property Listings" loading="lazy">
+                                </div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop" alt="LaCasa Property Details" loading="lazy">
+                                </div>
+                                <div class="slide">
+                                    <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&h=600&fit=crop" alt="LaCasa Dashboard" loading="lazy">
+                                </div>
+                            </div>
+                            <button class="slider-btn prev-btn" aria-label="Previous image">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="slider-btn next-btn" aria-label="Next image">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="slider-dots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="featured-project-info">
+                    <span class="project-label">Featured Project</span>
+                    <h3 class="project-name">LaCasa — Smart Restaurant System</h3>
+                    <div class="project-desc-card">
+                        <p>A complete full-stack restaurant management system with online food ordering, real-time order tracking, menu management, cart functionality, user authentication, and an admin dashboard for managing orders and menu items.</p>
+                    </div>
+                    <div class="project-tech-stack">
+                        <span>React.js</span><span>Node.js</span><span>Express.js</span><span>MongoDB</span><span>JWT Auth</span><span>REST API</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://la-casa-alpha.vercel.app/" target="_blank" class="project-link-btn" data-magnetic><i class="fas fa-external-link-alt"></i><span>Live Demo</span></a>
+                        <a href="https://github.com/lakshay3452/smart-restaurant-me" target="_blank" class="project-link-btn" data-magnetic><i class="fab fa-github"></i><span>Source Code</span></a>
+                    </div>
+                </div>
+            </div>
+            <!-- Project Filters -->
+            <div class="project-filters reveal-up" data-animate style="--delay: 0.2s">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="web">Web Development</button>
+                <button class="filter-btn" data-filter="react">React Projects</button>
+                <button class="filter-btn" data-filter="backend">Backend Projects</button>
+            </div>
+            <!-- Other Projects Grid -->
+            <div class="projects-grid">
+                <div class="project-card reveal-up" data-tilt data-animate data-category="web">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-card-icons">
+                                <i class="fas fa-folder-open"></i>
+                                <div class="project-card-links">
+                                    <a href="https://github.com/lakshay-webdev" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3>Portfolio Website</h3>
+                            <p>This responsive portfolio with dark/light mode, custom cursor, particle canvas, smooth animations, tilt effects, glassmorphism design, and contact form.</p>
+                        </div>
+                        <div class="project-card-bottom">
+                            <div class="project-card-tech"><span>HTML5</span><span>CSS3</span><span>JavaScript</span><span>Canvas API</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-animate data-category="react">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-card-icons">
+                                <i class="fas fa-folder-open"></i>
+                                <div class="project-card-links">
+                                    <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3>Task Manager App</h3>
+                            <p>A React task management app with drag-and-drop boards, local persistence, and fast UI interactions for better productivity.</p>
+                        </div>
+                        <div class="project-card-bottom">
+                            <div class="project-card-tech"><span>React</span><span>JavaScript</span><span>CSS</span><span>Local Storage</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card reveal-up" data-tilt data-animate data-category="backend">
+                    <div class="project-card-inner">
+                        <div class="project-card-top">
+                            <div class="project-card-icons">
+                                <i class="fas fa-folder-open"></i>
+                                <div class="project-card-links">
+                                    <a href="#" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                                </div>
+                            </div>
+                            <h3>REST API Service</h3>
+                            <p>A Node.js REST API built with Express and MongoDB, including authentication, CRUD endpoints, and role-based access.</p>
+                        </div>
+                        <div class="project-card-bottom">
+                            <div class="project-card-tech"><span>Node.js</span><span>Express</span><span>MongoDB</span><span>REST API</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE / EDUCATION -->
+    <section class="section section-dark" id="experience">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// my journey</span>
+                <h2 class="section-title reveal-up">
+                    Education &amp; <span class="text-gradient">Experience</span>
+                </h2>
+            </div>
+            <div class="journey-grid">
+                <div class="journey-col">
+                    <h3 class="journey-col-title reveal-up"><i class="fas fa-graduation-cap"></i> Education</h3>
+                    <div class="journey-card reveal-up" data-tilt>
+                        <div class="journey-card-accent"></div>
+                        <div class="journey-date">2023 — 2026</div>
+                        <h4>Bachelor of Computer Applications</h4>
+                        <p class="journey-place"><i class="fas fa-university"></i> Sunderdeep College of Management & Technologies, CCS University</p>
+                        <p class="journey-desc">Studying Data Structures, DBMS, Web Technologies, OS, Software Engineering. Building real-world projects alongside academics.</p>
+                    </div>
+                    <div class="journey-card reveal-up" data-tilt>
+                        <div class="journey-card-accent"></div>
+                        <div class="journey-date">2022 — 2023</div>
+                        <h4>Higher Secondary (12th)</h4>
+                        <p class="journey-place"><i class="fas fa-school"></i> Senior Secondary School</p>
+                        <p class="journey-desc">Completed 12th standard. First exposure to computers sparked my interest in technology and programming.</p>
+                    </div>
+                </div>
+                <div class="journey-col">
+                    <h3 class="journey-col-title reveal-up"><i class="fas fa-rocket"></i> Experience</h3>
+                    <div class="journey-card reveal-up" data-tilt>
+                        <div class="journey-card-accent"></div>
+                        <div class="journey-date">2024 — Present</div>
+                        <h4>Full Stack Developer</h4>
+                        <p class="journey-place"><i class="fas fa-laptop-code"></i> Freelance / Self Projects</p>
+                        <p class="journey-desc">Built 5+ production-ready web applications using MERN stack. Including LaCasa Restaurant System with complete backend integration.</p>
+                        <div class="journey-tags"><span>React</span><span>Node.js</span><span>MongoDB</span></div>
+                    </div>
+                    <div class="journey-card reveal-up" data-tilt>
+                        <div class="journey-card-accent"></div>
+                        <div class="journey-date">2023 — 2024</div>
+                        <h4>Self-taught Web Development</h4>
+                        <p class="journey-place"><i class="fas fa-book"></i> Online Courses &amp; Documentation</p>
+                        <p class="journey-desc">Mastered HTML, CSS, JavaScript through online resources. Progressed to React.js and backend development with Node.js.</p>
+                        <div class="journey-tags"><span>HTML/CSS</span><span>JavaScript</span><span>Git</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME CTA -->
+    <section class="resume-cta">
+        <div class="container">
+            <div class="cta-card reveal-up">
+                <div class="cta-bg-pattern"></div>
+                <div class="cta-content">
+                    <h2>Interested in working together?</h2>
+                    <p>Download my resume for a detailed look at my skills and experience, or reach out directly.</p>
+                    <div class="cta-buttons">
+                        <a href="resume.html" target="_blank" class="btn btn-white btn-lg" data-magnetic>
+                            <i class="fas fa-file-alt"></i>
+                            <span>View Resume</span>
+                        </a>
+                        <a href="#contact" class="btn btn-ghost-white btn-lg" data-magnetic>
+                            <span>Contact Me</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag reveal-up">// get in touch</span>
+                <h2 class="section-title reveal-up">
+                    Let's work <span class="text-gradient">together</span>
+                </h2>
+                <p class="section-desc reveal-up">Have a project in mind? Let's build something amazing.</p>
+            </div>
+            <div class="contact-layout">
+                <div class="contact-info-col">
+                    <div class="contact-text reveal-up">
+                        <h3>Don't be shy, say hi!</h3>
+                        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of your vision.</p>
+                    </div>
+                    <div class="contact-cards">
+                        <a href="mailto:ug13262@gmail.com" class="contact-card reveal-up" data-tilt>
+                            <div class="contact-card-icon"><i class="fas fa-envelope"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Email Me</span>
+                                <span class="contact-card-value">ug13262@gmail.com</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card-arrow"></i>
+                        </a>
+                        <a href="tel:+918700146531" class="contact-card reveal-up" data-tilt>
+                            <div class="contact-card-icon"><i class="fas fa-phone"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">Call Me</span>
+                                <span class="contact-card-value">+91 8700146531</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card-arrow"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/lakshay-gupta-webdev" target="_blank" rel="noopener" class="contact-card reveal-up" data-tilt>
+                            <div class="contact-card-icon"><i class="fab fa-linkedin-in"></i></div>
+                            <div class="contact-card-info">
+                                <span class="contact-card-label">LinkedIn</span>
+                                <span class="contact-card-value">linkedin.com/in/lakshay-gupta-webdev</span>
+                            </div>
+                            <i class="fas fa-arrow-right contact-card-arrow"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-form-col reveal-up">
+                    <form class="contact-form" id="contactForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="text" id="name" name="name" required maxlength="100" autocomplete="name">
+                                <label for="name">Full Name</label>
+                                <div class="form-line"></div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="email" name="email" required maxlength="100" autocomplete="email">
+                                <label for="email">Email</label>
+                                <div class="form-line"></div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required maxlength="150">
+                            <label for="subject">Subject</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required maxlength="1000"></textarea>
+                            <label for="message">Your Message</label>
+                            <div class="form-line"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-full btn-lg" data-magnetic>
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                        <div class="form-status" id="formStatus"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="#home" class="footer-logo">Lakshay Gupta</a>
+                    <p>Building modern web experiences with clean code and creative solutions.</p>
+                </div>
+                <div class="footer-nav">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h4>Connect</h4>
+                    <div class="footer-social-links">
+                        <a href="https://github.com/lakshay-webdev" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/lakshay-gupta-webdev" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="mailto:ug13262@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lakshay Gupta. Crafted with <i class="fas fa-heart"></i></p>
+                <p class="footer-credit">Designed &amp; Built by <span class="text-accent">Lakshay Gupta</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top" data-magnetic>
+        <i class="fas fa-arrow-up"></i>
+        <svg class="back-to-top-progress" viewBox="0 0 46 46">
+            <circle cx="23" cy="23" r="20" />
+        </svg>
+    </button>
+
+    <script src="js/script.js"></script>
+
+    <!-- TYPEWRITER ANIMATION -->
+    <script>
+        window.addEventListener('load', () => {
+            const typewriterEl = document.getElementById('typewriter');
+            if (typewriterEl) {
+                const roles = [
+                    'Full Stack Developer',
+                    'MERN Stack Developer',
+                    'React.js Developer',
+                    'BCA Final Year Student',
+                    'Freelance Web Developer'
+                ];
+
+                let roleIndex = 0;
+                let charIndex = 0;
+                let isDeleting = false;
+
+                function typeWriter() {
+                    const currentRole = roles[roleIndex];
+
+                    if (isDeleting) {
+                        typewriterEl.textContent = currentRole.substring(0, charIndex - 1);
+                        charIndex--;
+                    } else {
+                        typewriterEl.textContent = currentRole.substring(0, charIndex + 1);
+                        charIndex++;
+                    }
+
+                    if (!isDeleting && charIndex === currentRole.length) {
+                        setTimeout(() => {
+                            isDeleting = true;
+                            typeWriter();
+                        }, 2000);
+                        return;
+                    } else if (isDeleting && charIndex === 0) {
+                        isDeleting = false;
+                        roleIndex = (roleIndex + 1) % roles.length;
+                        setTimeout(typeWriter, 500);
+                        return;
+                    }
+
+                    const speed = isDeleting ? 40 : 80;
+                    setTimeout(typeWriter, speed);
+                }
+
+                typeWriter();
+            }
+        });
+    </script>
+</body>
+</html>
+
