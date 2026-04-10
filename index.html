@@ -9,7 +9,84 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#6c63ff">
+
+    <!-- Performance Monitoring -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                const loadTime = perfData.loadEventEnd - perfData.fetchStart;
+
+                // Send to analytics (if available)
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_load_time', {
+                        event_category: 'performance',
+                        event_label: 'page_load',
+                        value: Math.round(loadTime)
+                    });
+                }
+
+                console.log(`🚀 Page loaded in ${Math.round(loadTime)}ms`);
+            }, 0);
+        });
+
+        // Error tracking
+        window.addEventListener('error', (e) => {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'exception', {
+                    description: e.error?.message || 'JavaScript Error',
+                    fatal: false
+                });
+            }
+        });
+    </script>
+
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lakshay Gupta",
+        "jobTitle": "Full Stack Developer",
+        "description": "BCA Final Year student specializing in MERN Stack development",
+        "url": "https://lakshay-webdev.github.io/portfolio",
+        "sameAs": [
+            "https://github.com/lakshay-webdev",
+            "https://www.linkedin.com/in/lakshay-gupta-webdev"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Delhi",
+            "addressCountry": "India"
+        },
+        "email": "ug13262@gmail.com",
+        "telephone": "+91-8700146531",
+        "knowsAbout": [
+            "HTML5",
+            "CSS3",
+            "JavaScript",
+            "React.js",
+            "Node.js",
+            "MongoDB",
+            "Express.js",
+            "Git",
+            "Web Development"
+        ],
+        "alumniOf": {
+            "@type": "EducationalOrganization",
+            "name": "Sunderdeep College of Management & Technologies",
+            "parentOrganization": {
+                "@type": "EducationalOrganization",
+                "name": "CCS University"
+            }
+        }
+    }
+    </script>
 </head>
 <body>
 
@@ -87,6 +164,10 @@
                     <i class="fas fa-sun"></i>
                     <span class="toggle-bg"></span>
                 </button>
+                <button class="install-btn" id="installButton" style="display: none;" data-magnetic>
+                    <i class="fas fa-download"></i>
+                    <span>Install App</span>
+                </button>
                 <a href="#contact" class="btn btn-glow btn-sm" data-magnetic>
                     <span>Let's Talk</span>
                     <i class="fas fa-arrow-right"></i>
@@ -99,7 +180,7 @@
     </nav>
 
     <!-- HERO SECTION -->
-    <section class="hero" id="home">
+    <section class="hero" id="home" data-aos="fade-in">
         <div class="hero-bg">
             <div class="hero-grid-lines"></div>
             <div class="hero-gradient-orb hero-orb-1"></div>
@@ -108,35 +189,35 @@
             <canvas id="particleCanvas"></canvas>
         </div>
         <div class="container hero-container">
-            <div class="hero-content">
-                <div class="hero-badge reveal-up" style="--delay: 0.2s">
+            <div class="hero-content" data-aos="fade-right" data-aos-delay="200">
+                <div class="hero-badge" data-aos="zoom-in" data-aos-delay="400">
                     <span class="badge-dot"></span>
                     Available for work
                 </div>
                 <h1 class="hero-title">
-                    <span class="hero-line reveal-up" style="--delay: 0.4s">
+                    <span class="hero-line" data-aos="fade-up" data-aos-delay="600">
                         <span class="hero-line-inner">Hi, I'm <span class="text-accent">Lakshay</span></span>
                     </span>
-                    <span class="hero-line reveal-up" style="--delay: 0.6s">
+                    <span class="hero-line" data-aos="fade-up" data-aos-delay="800">
                         <span class="hero-line-inner">I build things for</span>
                     </span>
-                    <span class="hero-line reveal-up" style="--delay: 0.8s">
+                    <span class="hero-line" data-aos="fade-up" data-aos-delay="1000">
                         <span class="hero-line-inner">the <span class="text-gradient">web.</span></span>
                     </span>
                 </h1>
-                <div class="hero-role reveal-up" style="--delay: 1.0s">
+                <div class="hero-role" data-aos="fade-up" data-aos-delay="1200">
                     <span class="role-line"></span>
                     <span class="typewriter-wrapper">
                         <span id="typewriter" class="typewriter-text"></span>
                         <span class="typewriter-cursor"></span>
                     </span>
                 </div>
-                <p class="hero-description reveal-up" style="--delay: 1.2s">
+                <p class="hero-description" data-aos="fade-up" data-aos-delay="1400">
                     A passionate <strong>Full Stack Developer</strong> and BCA Final Year student
                     crafting modern, scalable web applications. Currently focused on the
                     <strong>MERN Stack</strong> ecosystem.
                 </p>
-                <div class="hero-cta reveal-up" style="--delay: 1.4s">
+                <div class="hero-cta" data-aos="fade-up" data-aos-delay="1600">
                     <a href="#projects" class="btn btn-primary btn-lg" data-magnetic>
                         <span>View My Work</span>
                         <i class="fas fa-arrow-down"></i>
@@ -146,7 +227,7 @@
                         <i class="fas fa-file-alt"></i>
                     </a>
                 </div>
-                <div class="hero-stats reveal-up" style="--delay: 1.6s">
+                <div class="hero-stats" data-aos="fade-up" data-aos-delay="1800">
                     <div class="stat-item">
                         <span class="stat-number" data-count="2">0</span><span class="stat-plus">+</span>
                         <span class="stat-label">Projects</span>
@@ -163,21 +244,21 @@
                     </div>
                 </div>
             </div>
-            <div class="hero-visual reveal-up" style="--delay: 0.6s">
+            <div class="hero-visual" data-aos="fade-left" data-aos-delay="1000">
                 <div class="hero-card-stack">
-                    <div class="floating-card card-1">
+                    <div class="floating-card card-1" data-aos="zoom-in" data-aos-delay="1200">
                         <div class="card-icon"><i class="fab fa-react"></i></div>
                         <span>React.js</span>
                     </div>
-                    <div class="floating-card card-2">
+                    <div class="floating-card card-2" data-aos="zoom-in" data-aos-delay="1400">
                         <div class="card-icon"><i class="fab fa-node-js"></i></div>
                         <span>Node.js</span>
                     </div>
-                    <div class="floating-card card-3">
+                    <div class="floating-card card-3" data-aos="zoom-in" data-aos-delay="1600">
                         <div class="card-icon"><i class="fas fa-leaf"></i></div>
                         <span>MongoDB</span>
                     </div>
-                    <div class="floating-card card-4">
+                    <div class="floating-card card-4" data-aos="zoom-in" data-aos-delay="1800">
                         <div class="card-icon"><i class="fab fa-js"></i></div>
                         <span>JavaScript</span>
                     </div>
@@ -185,7 +266,7 @@
                 <div class="hero-image-frame">
                     <div class="hero-img-glow"></div>
                     <div class="hero-img-container">
-                        <img src="images/profile.png" alt="Lakshay Gupta Profile Photo" class="hero-profile-photo">
+                        <img src="images/profile.png" alt="Lakshay Gupta Profile Photo" class="hero-profile-photo" loading="lazy">
                     </div>
                     <div class="hero-status-badge">
                         <span class="status-dot"></span>
@@ -194,14 +275,14 @@
                 </div>
             </div>
         </div>
-        <div class="hero-social-bar reveal-up" style="--delay: 1.8s">
+        <div class="hero-social-bar" data-aos="fade-up" data-aos-delay="2000">
             <a href="https://github.com/lakshay-webdev" target="_blank" rel="noopener" aria-label="GitHub" data-tooltip="GitHub"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/lakshay-gupta-webdev" target="_blank" rel="noopener" aria-label="LinkedIn" data-tooltip="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             <a href="mailto:ug13262@gmail.com" aria-label="Email" data-tooltip="Email"><i class="fas fa-envelope"></i></a>
             <a href="tel:+918700146531" aria-label="Phone" data-tooltip="Phone"><i class="fas fa-phone"></i></a>
             <div class="social-line"></div>
         </div>
-        <div class="scroll-indicator reveal-up" style="--delay: 2.0s">
+        <div class="scroll-indicator" data-aos="fade-in" data-aos-delay="2200">
             <div class="scroll-mouse">
                 <div class="scroll-wheel"></div>
             </div>
@@ -210,17 +291,17 @@
     </section>
 
     <!-- ABOUT SECTION -->
-    <section class="section" id="about">
+    <section class="section" id="about" data-aos="fade-in">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal-up">// about me</span>
-                <h2 class="section-title reveal-up">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// about me</span>
+                <h2 class="section-title">
                     Passionate about creating<br>
                     <span class="text-gradient">digital experiences</span>
                 </h2>
             </div>
             <div class="about-layout">
-                <div class="about-image-col reveal-up">
+                <div class="about-image-col" data-aos="fade-right">
                     <div class="about-image-card">
                         <div class="about-img-wrapper">
                             <img src="images/profile.png" alt="Lakshay Gupta profile photo" class="profile-photo">
@@ -232,7 +313,7 @@
                     </div>
                 </div>
                 <div class="about-content-col">
-                    <div class="about-text-block reveal-up">
+                    <div class="about-text-block" data-aos="fade-left" data-aos-delay="200">
                         <p class="about-lead">
                             I'm a <strong class="text-accent">BCA Final Year student</strong> from Sunderdeep College (CCS University)
                             with a deep passion for building things that live on the internet.
@@ -250,7 +331,7 @@
                             personal projects.
                         </p>
                     </div>
-                    <div class="about-details reveal-up">
+                    <div class="about-details" data-aos="fade-up" data-aos-delay="400">
                         <div class="detail-item">
                             <div class="detail-icon"><i class="fas fa-user"></i></div>
                             <div class="detail-info">
@@ -280,7 +361,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="about-actions reveal-up">
+                    <div class="about-actions" data-aos="fade-up" data-aos-delay="600">
                         <a href="resume.html" target="_blank" class="btn btn-primary" data-magnetic>
                             <span>View CV</span>
                             <i class="fas fa-file-alt"></i>
@@ -296,18 +377,80 @@
     </section>
 
     <!-- SKILLS SECTION -->
-    <section class="section section-dark" id="skills">
+    <section class="section section-dark" id="skills" data-aos="fade-in">
         <div class="container">
-            <div class="section-header">
-                <span class="section-tag reveal-up">// skills &amp; tools</span>
-                <h2 class="section-title reveal-up">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-tag">// skills &amp; tools</span>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="200">
                     My <span class="text-gradient">Tech Stack</span>
                 </h2>
-                <p class="section-desc reveal-up">Technologies and tools I use to bring ideas to life</p>
+                <p class="section-desc" data-aos="fade-up" data-aos-delay="400">Technologies and tools I use to bring ideas to life</p>
             </div>
-            <div class="skills-showcase">
+
+            <!-- Skills Progress Bars -->
+            <div class="skills-progress-section" data-aos="fade-up" data-aos-delay="600">
+                <h3 class="skills-progress-title">Proficiency Levels</h3>
+                <div class="skills-progress-container">
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">HTML5 & CSS3</span>
+                            <span class="skill-percentage">95%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 95%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">JavaScript</span>
+                            <span class="skill-percentage">90%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 90%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">React.js</span>
+                            <span class="skill-percentage">85%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 85%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">Node.js & Express</span>
+                            <span class="skill-percentage">80%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 80%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">MongoDB</span>
+                            <span class="skill-percentage">75%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 75%"></div>
+                        </div>
+                    </div>
+                    <div class="skill-progress-item">
+                        <div class="skill-progress-header">
+                            <span class="skill-name">Git & GitHub</span>
+                            <span class="skill-percentage">88%</span>
+                        </div>
+                        <div class="skill-progress-bar">
+                            <div class="skill-progress-fill" style="--progress: 88%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="skills-showcase" data-aos="fade-up" data-aos-delay="800">
                 <div class="skill-card-grid">
-                    <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-card" data-tilt data-aos="zoom-in" data-aos-delay="200">
                         <div class="skill-card-glow"></div>
                         <div class="skill-card-header">
                             <div class="skill-icon-wrapper"><i class="fas fa-palette"></i></div>
@@ -321,7 +464,7 @@
                             <div class="skill-tag"><i class="fab fa-react"></i><span>React.js</span><div class="tag-glow" style="--tag-color: #61DAFB"></div></div>
                         </div>
                     </div>
-                    <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-card" data-tilt data-aos="zoom-in" data-aos-delay="400">
                         <div class="skill-card-glow"></div>
                         <div class="skill-card-header">
                             <div class="skill-icon-wrapper"><i class="fas fa-server"></i></div>
@@ -333,7 +476,7 @@
                             <div class="skill-tag"><i class="fas fa-cogs"></i><span>Express.js</span><div class="tag-glow" style="--tag-color: #888"></div></div>
                         </div>
                     </div>
-                    <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-card" data-tilt data-aos="zoom-in" data-aos-delay="600">
                         <div class="skill-card-glow"></div>
                         <div class="skill-card-header">
                             <div class="skill-icon-wrapper"><i class="fas fa-database"></i></div>
@@ -345,7 +488,7 @@
                             <div class="skill-tag"><i class="fas fa-database"></i><span>MySQL</span><div class="tag-glow" style="--tag-color: #4479A1"></div></div>
                         </div>
                     </div>
-                    <div class="skill-card reveal-up" data-tilt>
+                    <div class="skill-card" data-tilt data-aos="zoom-in" data-aos-delay="800">
                         <div class="skill-card-glow"></div>
                         <div class="skill-card-header">
                             <div class="skill-icon-wrapper"><i class="fas fa-wrench"></i></div>
@@ -743,6 +886,16 @@
     </button>
 
     <script src="js/script.js"></script>
+
+    <!-- AOS Animation Library -->
+    <script>
+        AOS.init({
+            duration: 800,
+            easing: 'ease-out-cubic',
+            once: true,
+            offset: 50
+        });
+    </script>
 
     <!-- TYPEWRITER ANIMATION -->
     <script>
